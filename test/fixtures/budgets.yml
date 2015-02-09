@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  description: MyText
+  amount: 
+  amount: 
+  money_kind: MyString
+  date: 
+
+two:
+  description: MyText
+  amount: 
+  amount: 
+  money_kind: MyString
+  date: 

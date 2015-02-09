@@ -1,0 +1,10 @@
+<% @budgets.each do |budget| %>
+  <tr>
+    <td><%= budget.description %></td>
+    <td><%= budget.money_kind %></td>
+    <td><%= number_to_currency budget.amount %></td>
+    <td><%= budget.date.strftime("%Y-%m-%d") %></td>
+    <td><%= link_to "Edit", edit_budget_path(budget), remote: true, class: "btn btn-primary" %></td>
+    <td><%= link_to "Delete", budget_delete_path(budget), remote: true, class: "btn btn-danger" %></td>
+  </tr>
+<% end %>
