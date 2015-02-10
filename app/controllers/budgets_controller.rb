@@ -1,5 +1,7 @@
 class BudgetsController < ApplicationController
   respond_to :html, :js
+
+   before_filter :authenticate_user!
   def index
     @budgets = Budget.all
   end
@@ -38,6 +40,6 @@ class BudgetsController < ApplicationController
 private
 
   def budget_params
-    params.require(:budget).permit(:description, :amount, :date, :money_kind)
+    params.require(:budget).permit(:description, :amount, :date, :money_kind).merge(user_id: current_user.id)
   end
 end
