@@ -3,7 +3,7 @@ class BudgetsController < ApplicationController
 
    before_filter :authenticate_user!
   def index
-    @budgets = Budget.all
+    @budgets = Budget.accessible_by(current_ability)
   end
 
   def new
@@ -11,7 +11,7 @@ class BudgetsController < ApplicationController
   end
 
   def create
-    @budgets = Budget.all
+    @budgets = Budget.accessible_by(current_ability)
     @budget = Budget.create(budget_params)
   end
 
@@ -20,7 +20,7 @@ class BudgetsController < ApplicationController
   end
 
   def update
-    @budgets = Budget.all
+    @budgets = Budget.accessible_by(current_ability)
     @budget = Budget.find(params[:id])
     
     @budget.update_attributes(budget_params)
