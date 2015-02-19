@@ -4,5 +4,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :budgets
+  has_one :wallet
+  #has_many :budgets, :through => :wallet
 end

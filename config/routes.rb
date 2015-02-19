@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users
   #get 'budgets/index'
   #resources :budgets
@@ -6,8 +7,9 @@ Rails.application.routes.draw do
     get "delete"
   end
   
+  resources :wallets, :only => [:show, :new, :create]
 
-  root to: 'budgets#index'
+  root to: 'wallets#new'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -3,6 +3,7 @@ class Ability
 
   def initialize(user)
 
+    can :manage, Wallet, user_id: user.id
     can :manage, Budget, user_id: user.id
     # Define abilities for the passed in user here. For example:
     #
