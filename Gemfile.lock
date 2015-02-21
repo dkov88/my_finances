@@ -82,6 +82,8 @@ GEM
       warden (~> 1.2.3)
     erubis (2.7.0)
     execjs (2.3.0)
+    filterrific (2.0.3)
+      rails (>= 3.1.0)
     globalid (0.3.2)
       activesupport (>= 4.1.0)
     hike (1.2.3)
@@ -180,6 +182,7 @@ DEPENDENCIES
   cancan
   coffee-rails (~> 4.1.0)
   devise
+  filterrific
   jbuilder (~> 2.0)
   jquery-rails
   rails (= 4.2.0)

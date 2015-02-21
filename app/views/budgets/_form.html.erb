@@ -8,27 +8,32 @@
         <%= f.text_field :description %>
       </div>
     </div>
+
     <div class="control-group">
       <%= f.label :money_kind, class: "control-label" %>
       <div class="controls">
-        <%= f.text_field :money_kind %>
+        <%= f.select(:money_kind, options_for_select([['income', 'income'], ['expense', 'expense']])) %>
       </div>
     </div>
-  <div class="control-group">
+
+    <div class="control-group">
       <%= f.label :amount, class: "control-label" %>
       <div class="controls">
         <%= f.text_field :amount %>
       </div>
     </div>
-  <div class="control-group">
+
+    <div class="control-group">
       <%= f.label :date, class: "control-label" %>
       <div class="controls">
         <%= f.date_select :date %>
       </div>
     </div>
   </div>
+
   <div class="modal-footer">
     <%= f.submit class: "btn btn-primary" %>
     <%= submit_tag 'Cancel', :type => :reset, :class => "btn btn-danger", "data-dismiss" => "modal" %>
   </div>
+
 <% end %>

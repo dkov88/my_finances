@@ -11,10 +11,6 @@ class WalletsController < ApplicationController
     @wallets = Wallet.find_by_email(@email)
     unless @wallets 
       @wallet = Wallet.new
-      def all
-        income = true
-        expense = true
-      end
     else
      redirect_to budgets_url
     end
