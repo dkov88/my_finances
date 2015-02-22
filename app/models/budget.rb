@@ -10,4 +10,9 @@ class Budget < ActiveRecord::Base
             format: { :with => /\A(income|expense)\z/}
   validates_presence_of :wallet_id
 
+
+  scope :description, -> (description) { where("description like ?", "%#{description}%")}
+  scope :money_kind, -> (money_kind) { where money_kind: money_kind }
+
+
 end
