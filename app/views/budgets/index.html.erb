@@ -1,10 +1,14 @@
 <div class="container">
   <div class="well">
-    
-    <div class="col-xs-4">
-      <%= link_to "New budget item", new_budget_path, remote: true, class: "navbar-btn btn btn-primary" %>
+    <div class="row">
+      <div class="col-xs-4">
+        <%= link_to "New budget item", new_budget_path, remote: true, class: "navbar-btn btn btn-primary" %>
+      </div>
     </div>
-
+    </hr>
+    <div class="row col-xs-12">
+      <p class="text-left"><h3>Filtering of items</h3></p>
+    </div>
     <div class="row">
       <%= form_tag budgets_path, :method => 'get' do %>
         <div class="col-xs-2">
@@ -13,6 +17,26 @@
         <div class="col-xs-2">
           <%= text_field_tag :money_kind, params[:money_kind], class: "form-control", placeholder: "Type of money" %>
         </div>
+  
+        <div class='col-xs-2'>
+           <%= text_field_tag :start_date, params[:start_date], class: "form-control", id: "datepicker", placeholder: "Start date" %>
+        </div>
+
+        <div class='col-xs-2'>
+           <%= text_field_tag :end_date, params[:end_date], class: "form-control", id: "datepicker2", placeholder: "End date" %>
+        </div>
+
+        <script type="text/javascript">
+            $(function () {
+                $('#datepicker').datepicker({
+                  format: 'yyyy-mm-dd'
+                });
+                $('#datepicker2').datepicker({
+                  format: 'yyyy-mm-dd'
+                });
+            });
+        </script>
+
         <div class="col-xs-2">
           <%= submit_tag "Search", :name => nil, class: "navbar-btn btn btn-primary" %>
         </div>

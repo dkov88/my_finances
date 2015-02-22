@@ -1,6 +1,5 @@
 class Budget < ActiveRecord::Base
   belongs_to :wallet
-  #belongs_to :user
 
   validates :description, presence: true
   validates :amount, presence: true,
@@ -13,6 +12,10 @@ class Budget < ActiveRecord::Base
 
   scope :description, -> (description) { where("description like ?", "%#{description}%")}
   scope :money_kind, -> (money_kind) { where money_kind: money_kind }
+  scope :start_date, -> (start_date) { where("date >= ?", "#{start_date}")}
+  scope :end_date, -> (end_date) { where("date <= ?", "#{end_date}")}
+  
+  
 
 
 end

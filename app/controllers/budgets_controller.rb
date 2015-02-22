@@ -8,6 +8,7 @@ class BudgetsController < ApplicationController
     filtering_params(params).each do |key, value|
       @budgets = @budgets.public_send(key, value) if value.present?
     end
+    
   end
 
   def new
@@ -51,6 +52,6 @@ private
   end
 
   def filtering_params(params)
-    params.slice(:description, :money_kind)
+    params.slice(:description, :money_kind, :start_date, :end_date)
   end
 end
