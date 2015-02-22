@@ -12,7 +12,7 @@
     <div class="control-group">
       <%= f.label :money_kind, class: "control-label" %>
       <div class="controls">
-        <%= f.select(:money_kind, options_for_select([['income', 'income'], ['expense', 'expense']])) %>
+        <%= f.select(:money_kind, options_for_select(@type)) %>
       </div>
     </div>
 
@@ -32,7 +32,7 @@
   </div>
 
   <div class="modal-footer">
-    <%= f.submit 'Create Item', class: "btn btn-primary" %>
+    <%= f.submit 'Save Item', class: "btn btn-primary" %>
     <%= submit_tag 'Cancel', :type => :reset, :class => "btn btn-danger", "data-dismiss" => "modal" %>
   </div>
 
