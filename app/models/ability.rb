@@ -3,8 +3,13 @@ class Ability
 
   def initialize(user)
 
-    can :manage, Wallet, user_id: user.id
-    can :manage, Budget, user_id: user.id
+
+    can :create, Wallet
+    can :update, Wallet do |wallet|
+      wallet.try(:email) == user.email
+    end
+    #can :manage, Wallet, email: user.email
+    #can :manage, Budget, user_id: user.id
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)

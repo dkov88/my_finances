@@ -7,11 +7,11 @@ Rails.application.routes.draw do
     get "delete"
   end
   
-  resources :wallets, :only => [:show, :new, :create]
+  resources :wallets, :only => [:new, :create, :edit, :update]
 
   root to: 'wallets#new'
 
-
+  get "*any", via: :all, to: "errors#not_found"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,0 +1,14 @@
+<%= form_for(@wallet, html: {class: 'form-horizontal'}) do |f| %>
+      
+  <div class="form-group">
+    <%= f.check_box :income, :checked => true %> 
+    <%= label :income, 'Income' %>
+  </div>
+      
+  <div class="form-group">
+    <%= f.check_box :expense %>
+    <%= label :expense, 'Expense' %>
+  </div>
+
+  <%= f.submit "#{action_name.capitalize} wallet", class: "btn btn-success" %>
+<% end %>

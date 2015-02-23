@@ -1,6 +1,8 @@
 class WalletsController < ApplicationController
 
   before_filter :authenticate_user!
+  load_and_authorize_resource
+
 
   def show
     @wallet = Wallet.find(params[:user_id])
@@ -8,8 +10,8 @@ class WalletsController < ApplicationController
 
   def new
     @email = current_user.email
-    @wallets = Wallet.find_by_email(@email)
-    unless @wallets 
+    @wallet = Wallet.find_by_email(@email)
+    unless @wallet 
       @wallet = Wallet.new
     else
      redirect_to budgets_url
@@ -18,6 +20,17 @@ class WalletsController < ApplicationController
 
   def create
     @wallet = Wallet.create(wallet_params)
+    redirect_to budgets_url
+  end
+
+  def edit
+    @wallet = Wallet.find_by_email(current_user.email).
+    authorize! :edit, @wallet
+  end
+
+  def update
+    @wallet = Wallet.find_by_email(current_user.email)
+    @wallet.update_attributes(wallet_params)
     redirect_to budgets_url
   end
 
