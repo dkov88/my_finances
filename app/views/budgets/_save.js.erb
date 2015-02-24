@@ -1,4 +1,4 @@
-$("ul.errors").html("")
+$("ul.errors").html("").addClass("text-danger")
 <% if @budget.errors.any? %>
   <% @budget.errors.full_messages.each do |message| %>
     $("ul.errors").append($("<li />").html("<%= message.html_safe %>"))

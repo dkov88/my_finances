@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     get "delete"
   end
   
-  resources :wallets, :only => [:new, :create, :edit, :update]
+  resources :wallets, :only => [:new, :create, :edit, :update, :destroy]
 
   root to: 'wallets#new'
 

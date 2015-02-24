@@ -1,7 +1,9 @@
 class WalletsController < ApplicationController
 
+  load_and_authorize_resource except: [:create]
   before_filter :authenticate_user!
-  load_and_authorize_resource
+  
+  before_action :find, only: [:new, :update, :edit, :destroy]
 
 
   def show
@@ -9,8 +11,6 @@ class WalletsController < ApplicationController
   end
 
   def new
-    @email = current_user.email
-    @wallet = Wallet.find_by_email(@email)
     unless @wallet 
       @wallet = Wallet.new
     else
@@ -24,19 +24,28 @@ class WalletsController < ApplicationController
   end
 
   def edit
-    @wallet = Wallet.find_by_email(current_user.email).
     authorize! :edit, @wallet
   end
 
   def update
-    @wallet = Wallet.find_by_email(current_user.email)
     @wallet.update_attributes(wallet_params)
     redirect_to budgets_url
+  end
+
+  def destroy
+    authorize! :destroy, @wallet
+    @wallet.budgets.destroy_all
+    @wallet.destroy
+    redirect_to root_path
   end
 
 private
 
   def wallet_params
     params.require(:wallet).permit(:email, :income, :expense).merge(email: current_user.email)
+  end
+
+  def find
+    @wallet = Wallet.find_by_email(current_user.email)
   end
 end

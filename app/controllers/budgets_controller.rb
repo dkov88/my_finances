@@ -8,6 +8,7 @@ class BudgetsController < ApplicationController
     filtering_params(params).each do |key, value|
       @budgets = @budgets.public_send(key, value) if value.present?
     end
+    @wallet_id = Wallet.find_by_email(current_user.email).id
   end
 
   def new

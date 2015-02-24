@@ -4,18 +4,22 @@
       <div class="col-xs-4">
         <%= link_to "New budget item", new_budget_path, remote: true, class: "navbar-btn btn btn-primary" %>
       </div>
+      <div class="pull-right">
+        <%= link_to "Edit wallet", edit_wallet_path(@wallet_id), class: "navbar-btn btn btn-primary" %>
+        <%= link_to "Delete wallet", wallet_path(@wallet_id), method: :delete, data: { confirm: 'Are you certain you want to delete this?' }, class: "navbar-btn btn btn-danger" %>
+      </div>
     </div>
     </hr>
     <div class="row col-xs-12">
       <p class="text-left"><h3>Filtering of items</h3></p>
     </div>
-    <div class="row">
+    <div class="row" id="filter-panel">
       <%= form_tag budgets_path, :method => 'get' do %>
         <div class="col-xs-2">
           <%= text_field_tag :description, params[:description], class: "form-control", placeholder: "Description" %>
         </div>
         <div class="col-xs-2">
-          <%= text_field_tag :money_kind, params[:money_kind], class: "form-control", placeholder: "Type of money" %>
+          <%= select_tag :money_kind, options_for_select([[ "income", "income" ],["expense", "expense"]]), class: "form-control" %>
         </div>
   
         <div class='col-xs-2'>
