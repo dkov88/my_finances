@@ -51,7 +51,7 @@ private
 
   def get_wallets
     wallet_id = Wallet.find_by_email(current_user.email).id
-    @budgets = Budget.where(wallet_id: wallet_id).paginate(:page => params[:page], :per_page => 10).order('date DESC')
+    @budgets = Budget.where(wallet_id: wallet_id).paginate(:page => params[:page], :per_page => 8).order('date DESC')
   end
 
   def filtering_params(params)
